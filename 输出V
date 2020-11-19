@@ -1,0 +1,69 @@
+#include<stdio.h>
+#include<windows.h>
+#pragma warning(disable:4996)
+
+void OutputV1()//直接输出
+{
+	printf("v   v\n");
+	printf(" v v \n");
+	printf("  v  \n");
+}
+
+void OutputV2(int n)//逐行计算
+{
+	for (int i = 1; i < n+1 ; i++)//循环的行数
+	{
+		for (int j = 1; j < 2 * n ; j++)//每行要输出的次数
+		{
+			if (j == i||j==2*n-i)//判断要输出的对象
+			{
+				printf("v");
+			}
+			else
+			{
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
+}
+
+void OutputV3(int n)//循环
+{
+	for (int i = 1; i < n + 1; i++)//循环的行数
+	{
+		for (int j = 1; j < i; j++)//左下角空格的循环输出
+		{
+			printf(" ");
+		}
+		printf("v");//输出左侧的“v”
+		for (int j = 0; j < 2 * n - 2 * i - 1; j++)//中间空格的循环输出
+		{
+			printf(" ");
+		}
+		if (i != n)//因为最后一行只有一个“v”，避免重复输出
+		{
+			printf("v");
+		}
+		for (int j = 1; j < i; j++)//右下角空格的循环输出
+		{
+			printf(" ");
+		}
+		printf("\n");
+	}
+}
+
+
+int main(){
+	int n = 1;
+	printf("请输入您要输出的行数：");
+	scanf("%d", &n);
+	printf("直接输出的图形如下：\n");
+	OutputV1();
+	printf("逐行计算后输出的图形如下：\n");
+	OutputV2(n);
+	printf("循环后输出的图形如下：\n");
+	OutputV3(n);
+	system("pause");
+	return 0;
+}
