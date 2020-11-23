@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+
+void SeekPrime()
+{
+	int controller = 0;//控制器
+	int counter = 0;//计数器
+	for (int i = 100; i < 200； i++)//循环区间内的每一个数
+	{
+		for (int j = 2; j < i; j++)//用从2到本身之前的一个数逐个求余，判断是否为素数
+		{
+			if (i%j == 0)//不是素数
+			{
+				controller = 1;
+			}
+		}
+		if (0 == controller)
+		{
+			printf("%d ", i);
+			counter++;
+		}
+		controller = 0;//让控制器归0
+		if (counter == 5)//每五个数字换一行
+		{
+			printf("\n");
+			counter = 0;
+		}
+	}
+	printf("\n");
+}
+
+int main(){
+	printf("该区域间的素数为：\n");
+	SeekPrime();
+	return 0;
+}
